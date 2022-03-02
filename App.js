@@ -71,12 +71,10 @@ const [data , setData] = useState ({
 
 const loginHandle = () => {
   if ( data.username.length == 0 || data.password.length == 0 ) {
-    Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
-    ]);
+    Alert.alert('Wrong Input!', 'Username or password field cannot be empty.');
 
-} else if ( data.username.length == 4 || data.password.length == 6 ){
-    Alert.alert('Username and  password are valid.', [
-    ]);
+} else if ( data.username.length >= 4 || data.password.length >= 6 ){
+    Alert.alert('Username and  password are valid.');
 }
 
 }
@@ -91,13 +89,6 @@ const loginHandle = () => {
       placeholder="Username"
       onChangeText={(val) => handleInput(val)}
       onEndEditing={(e)=>handleValidUser(e.nativeEvent.text)}/>
-      {data.check_textInput ?
-        <Animatable.View
-            animation="bounceIn"
-          >
-            <Text style={styles.validMsg}>It's valid</Text>
-          </Animatable.View>
-            :null }
             </View>
             <View>
             { data.isValidUser ? null : 
@@ -112,13 +103,6 @@ const loginHandle = () => {
           secureTextEntry
           onChangeText={(val) => handlePasswordChange(val)}
           />
-      {data.check_textInput ?
-        <Animatable.View
-            animation="bounceIn"
-          >
-            <Text style={styles.validMsg}>It's valid</Text>
-          </Animatable.View>
-            :null }
           </View>
           <View>
         { data.isValidPassword ? null : 
